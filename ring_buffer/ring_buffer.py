@@ -4,15 +4,15 @@ from doubly_linked_list import DoublyLinkedList
 class RingBuffer:
     def __init__(self, capacity):
         self.capacity = capacity
-        self.current = None
+        self.current_oldest = None
         self.storage = DoublyLinkedList()
 
     def append(self, item):
-        if self.storage.length == self.capacity:                        
-            self.storage.remove_from_head()         
-        self.storage.add_to_head(item)
-        
 
+        if self.storage.length == self.capacity:                        
+            self.storage.remove_from_head()
+            self.storage.add_to_head(item)         
+        else: self.storage.add_to_tail(item)
             
 
     def get(self):
