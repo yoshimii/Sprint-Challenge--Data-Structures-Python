@@ -12,10 +12,11 @@ class RingBuffer:
             self.storage.add_to_tail(item)
             self.current_oldest = self.storage.head
         elif self.storage.length == self.capacity:
-            # if self.current_oldest.next.next == None:
-            #     self.current_oldest = self.storage.head                       
             self.current_oldest.value = item
-            self.current_oldest = self.current_oldest.next
+            if self.current_oldest.next == None:
+                self.current_oldest = self.storage.head
+            else:
+                self.current_oldest = self.current_oldest.next
             return
             # self.current_oldest = self.current_oldest.prev.next
         else: self.storage.add_to_tail(item) 
