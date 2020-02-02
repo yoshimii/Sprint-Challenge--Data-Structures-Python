@@ -17,8 +17,7 @@ class RingBuffer:
                 self.current_oldest = self.storage.head
             else:
                 self.current_oldest = self.current_oldest.next
-            return
-            # self.current_oldest = self.current_oldest.prev.next
+            return            
         else: self.storage.add_to_tail(item) 
 
     def get(self):
